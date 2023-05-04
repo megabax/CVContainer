@@ -1,5 +1,8 @@
 import cv2
 
+from Libraries.Core import ImageInfo
+
+
 class ImageProcessingStep:
     """Шаг обработки изображений"""
 
@@ -20,5 +23,14 @@ class MedianBlurProcessingStep(ImageProcessingStep):
         """Выполнить обработку"""
 
         median_image = cv2.medianBlur(info.image, self.ksize)
-        info.filtered_image=median_image
-        return info
+        return ImageInfo(median_image)
+
+class ThresholdProcessingStep(ImageProcessingStep):
+    """Шаг, отвечающий за бинаризацию"""
+
+    def process(self,info):
+        """Выполнить обработку"""
+
+        gray = cv2.cvtColor(info.image, cv2.COLOR_BGR2GRAY)
+        image = cv2.threshold(gray, 0, 255, cv2.THRESH_OTSU)[1]
+        return ImageInfo(image)
