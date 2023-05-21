@@ -3,7 +3,7 @@ import cv2
 from Libraries.Core import Engine
 from Libraries.ImageProcessingSteps import MedianBlurProcessingStep, ThresholdProcessingStep
 
-my_photo = cv2.imread('../Photos/car.jpg')
+my_photo = cv2.imread('../Photos/6108249.jpg')
 core=Engine()
 core.steps.append(MedianBlurProcessingStep(5))
 core.steps.append(ThresholdProcessingStep())

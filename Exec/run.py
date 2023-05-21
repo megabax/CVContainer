@@ -15,5 +15,7 @@ for info in history:
 cv2.imshow('res', res.image)
 
 
+
+
 cv2.waitKey()
 cv2.destroyAllWindows()
